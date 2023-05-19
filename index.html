@@ -15,7 +15,7 @@
 
     <style type="text/css">
       textarea:not(.one-line) {
-        height: 150px !important;
+        min-height: 150px !important;
       }
       textarea.one-line {
         resize: none !important;
@@ -24,13 +24,13 @@
   </head>
   <body>
     <div class="container">
-      <h1>Language file gen</h1>
+      <h1>Language file generator</h1>
 
       <main class="row">
         <!-- Navbar
         ================================================== -->
         <div class="card mb-3">
-          <h5 class="card-header">Navbar</h5>
+          <h5 class="card-header">Navigation</h5>
           <div class="card-body">
             <table class="table table-bordered">
               <thead class="table-light">
@@ -744,9 +744,7 @@ $</textarea
                 <!-- Features -->
                 <tr>
                   <td rowspan="2" class="fw-bold align-middle">Feature 1</td>
-                  <td>
-										50 queries
-									</td>
+                  <td>50 queries</td>
                   <td>
                     <textarea
                       type="text"
@@ -757,12 +755,16 @@ $</textarea
                 </tr>
                 <tr>
                   <td>
-										50 queries per user per day <br /><br />
-										<strong>Note: </strong>Đoạn này bản dịch chỗ "50 queries" chị thay giúp em thành {boldContent} để lúc xuất ra nó sẽ in đậm, vÍ dụ như:
-										<br />
-											- Tiếng Nhật: ユーザーあたり 1 日あたり50 クエリ => ユーザーあたり 1 日あたり{boldContent} <br />
-											- Tiếng Việt: 50 truy vấn mỗi người dùng mỗi ngày => {boldContent} mỗi người dùng mỗi ngày
-									</td>
+                    50 queries per user per day <br /><br />
+                    <strong>Note: </strong>Đoạn này bản dịch chỗ "50 queries"
+                    chị thay giúp em thành {boldContent} để lúc xuất ra nó sẽ in
+                    đậm, vÍ dụ như:
+                    <br />
+                    - Tiếng Nhật: ユーザーあたり 1 日あたり50 クエリ =>
+                    ユーザーあたり 1 日あたり{boldContent} <br />
+                    - Tiếng Việt: 50 truy vấn mỗi người dùng mỗi ngày =>
+                    {boldContent} mỗi người dùng mỗi ngày
+                  </td>
                   <td>
                     <textarea
                       type="text"
@@ -1214,9 +1216,82 @@ hi@telegpt.guru</textarea
           </div>
         </div>
         <!-- end Warnings -->
+
+        <!-- Required info
+        ================================================== -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="">
+              Required info
+            </h5>
+            <p>
+              Chị tra 2 mã Country và Language code bên dưới ở đây ạ:
+              <a
+                href="https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html"
+                target="_blank"
+                >link</a
+              >
+            </p>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead class="table-light">
+                <tr>
+                  <th style="width: 150px"></th>
+                  <th style="width: 200px">Info</th>
+                  <th>Answer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="2" class="fw-bold align-middle">Country/Languages Code</td>
+                  <td>ISO-3166 Country Codes</td>
+                  <td>
+                    <textarea
+                      type="text"
+                      class="form-control one-line"
+                      autocomplete="false"
+                    ></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td>ISO-639 Language Codes</td>
+                  <td>
+                    <textarea
+                      type="text"
+                      class="form-control one-line"
+                      autocomplete="false"
+                    ></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fw-bold align-middle">Language display</td>
+                  <td>
+                    Tên ngôn ngữ để người dùng nhận biết: <br />
+                    - Tiếng Anh: English <br />
+                    - Tiếng Trung: 中国人 
+                  </td>
+                  <td>
+                    <textarea
+                      type="text"
+                      class="form-control one-line"
+                      autocomplete="false"
+                    ></textarea>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- end Required info -->
       </main>
 
-      <button type="button" class="btn btn-success" id="downloadBtn" onclick="generateFile()">
+      <button
+        type="button"
+        class="btn btn-success"
+        id="downloadBtn"
+        onclick="generateFile()"
+      >
         Generate file
       </button>
     </div>
