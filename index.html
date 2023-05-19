@@ -760,10 +760,19 @@ $</textarea
                     chị thay giúp em thành {boldContent} để lúc xuất ra nó sẽ in
                     đậm, vÍ dụ như:
                     <br />
-                    - Tiếng Nhật: ユーザーあたり 1 日あたり50 クエリ =>
-                    ユーザーあたり 1 日あたり{boldContent} <br />
-                    - Tiếng Việt: 50 truy vấn mỗi người dùng mỗi ngày =>
-                    {boldContent} mỗi người dùng mỗi ngày
+                    - Tiếng Nhật: ユーザーあたり 1 日あたり<span
+                      class="text-danger"
+                      >50 クエリ</span
+                    >
+                    => ユーザーあたり 1 日あたり<span class="text-danger"
+                      >{boldContent}</span
+                    >
+                    <br />
+                    - Tiếng Việt:
+                    <span class="text-danger">50 truy vấn</span> mỗi người dùng
+                    mỗi ngày =>
+                    <span class="text-danger">{boldContent}</span> mỗi người
+                    dùng mỗi ngày
                   </td>
                   <td>
                     <textarea
@@ -1221,9 +1230,7 @@ hi@telegpt.guru</textarea
         ================================================== -->
         <div class="card mb-3">
           <div class="card-header">
-            <h5 class="">
-              Required info
-            </h5>
+            <h5 class="">Required info</h5>
             <p>
               Chị tra 2 mã Country và Language code bên dưới ở đây ạ:
               <a
@@ -1244,7 +1251,9 @@ hi@telegpt.guru</textarea
               </thead>
               <tbody>
                 <tr>
-                  <td rowspan="2" class="fw-bold align-middle">Country/Languages Code</td>
+                  <td rowspan="2" class="fw-bold align-middle">
+                    Country/Languages Code
+                  </td>
                   <td>ISO-3166 Country Codes</td>
                   <td>
                     <textarea
@@ -1269,7 +1278,7 @@ hi@telegpt.guru</textarea
                   <td>
                     Tên ngôn ngữ để người dùng nhận biết: <br />
                     - Tiếng Anh: English <br />
-                    - Tiếng Trung: 中国人 
+                    - Tiếng Trung: 中国人
                   </td>
                   <td>
                     <textarea
