@@ -1,5 +1,10 @@
-const generateFile = () => {
-    let fileContent = `export default {
+const generateFile = (isBackup=false) => {
+    let temp = 'const transcript = '
+    if (!isBackup) {
+        temp = 'export default '
+    }
+
+    let fileContent = `${temp}{
         locale: {
             code: "{74}",
             iso: "{75}",
@@ -170,11 +175,22 @@ const generateFile = () => {
             }
         }
     }`
-    
+
     const allTransScripts = document.querySelectorAll("textarea")
     
+    if (isBackup && allTransScripts[74].value.trim() == '') {
+        alert("Để tạo file backup cần điền Language code")
+         allTransScripts[74].classList.add('border', 'border-danger')
+            const y = allTransScripts[i].getBoundingClientRect().top + window.scrollY - 20;
+            window.scroll({
+                top: y,
+                behavior: 'smooth'
+            });
+            return;
+    }
+
     for (let i = 0; i < allTransScripts.length; i++) {
-        if (allTransScripts[i].value.trim() === '') {
+        if (!isBackup && allTransScripts[i].value.trim() === '') {
             allTransScripts[i].classList.add('border', 'border-danger')
             const y = allTransScripts[i].getBoundingClientRect().top + window.scrollY - 20;
             window.scroll({
@@ -195,7 +211,7 @@ const generateFile = () => {
         }
     }
     
-    const fileName = `${allTransScripts[74].value}.js`;
+    const fileName = `${allTransScripts[74].value}-${isBackup ? '_not_done' : ''}.js`;
     const element = document.createElement("a");
     element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(fileContent));
     element.setAttribute("download", fileName);
@@ -203,4 +219,54 @@ const generateFile = () => {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
+}
+
+function getObjectValues(obj) {
+    let result = [];
+  
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        const value = obj[key];
+
+        if (typeof value === 'object' && value !== null) {
+          const nestedKeysAndValues = getObjectValues(value);
+          result = result.concat(nestedKeysAndValues);
+        }
+
+        if (typeof value === 'string')
+            result.push(value);
+      }
+    }
+  
+    return result;
+  }
+
+
+function readFile() {
+    const fileInput = document.getElementById('backupFile');
+    const file = fileInput.files[0];
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const contents = e.target.result;
+        const script = document.createElement('script');
+        script.text = contents;
+        document.body.appendChild(script);
+
+        const allTransScripts = document.querySelectorAll("textarea")
+        const ignore_pos = [55, 57, 62, 63, 64, 66, 67, 68]
+        const backupTranscripts = getObjectValues(transcript.setup)
+        backupTranscripts.push(...getObjectValues(transcript.locale))
+        
+        let current_transcriptPos = 0
+        for (let i = 0; i < backupTranscripts.length; i++) {
+            if (ignore_pos.includes(i))
+                continue
+
+            allTransScripts[current_transcriptPos].value = backupTranscripts[i]
+            current_transcriptPos++
+        }
+    };
+
+    reader.readAsText(file);
 }

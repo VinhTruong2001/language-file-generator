@@ -25,8 +25,15 @@
   <body>
     <div class="container">
       <h1>Language file generator</h1>
-
+      
       <main class="row">
+        <div class="card mb-4">
+          <h5 class="card-header">Continue from backup file</h5>
+          <div class="card-body">
+            <input class="form-control" type="file" id="backupFile" accept=".js">
+            <button onclick="readFile()" class="btn btn-success mt-3">Backup File</button>
+          </div>
+        </div>
         <!-- Navbar
         ================================================== -->
         <div class="card mb-3">
@@ -1254,7 +1261,7 @@ hi@telegpt.guru</textarea
                   <td rowspan="2" class="fw-bold align-middle">
                     Country/Languages Code
                   </td>
-                  <td>ISO-3166 Country Codes</td>
+                  <td>(ISO-3166) Country Codes</td>
                   <td>
                     <textarea
                       type="text"
@@ -1264,7 +1271,7 @@ hi@telegpt.guru</textarea
                   </td>
                 </tr>
                 <tr>
-                  <td>ISO-639 Language Codes</td>
+                  <td>(ISO-639) Language Codes</td>
                   <td>
                     <textarea
                       type="text"
@@ -1301,7 +1308,15 @@ hi@telegpt.guru</textarea
         id="downloadBtn"
         onclick="generateFile()"
       >
-        Generate file
+        Generate FINAL file
+      </button>
+      <button
+        type="button"
+        class="btn btn-warning"
+        id="downloadBtn"
+        onclick="generateFile(true)"
+      >
+        Generate BACKUP file
       </button>
     </div>
 
