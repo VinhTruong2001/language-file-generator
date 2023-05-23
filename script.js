@@ -91,7 +91,7 @@ const generateFile = (isBackup=false) => {
                     start: "{41}",
                     pro: {
                         title: "{42}",
-                        price: "{43}",
+                        price: "{currency}{43}",
                         per: "{44}",
                         feats: {
                             feat1: {
@@ -114,7 +114,7 @@ const generateFile = (isBackup=false) => {
                     },
                     enterprise: {
                         title: "{51}",
-                        price: "{52}",
+                        price: "{currency}{52}",
                         per: "{53}",
                         feats: {
                             feat1: {
@@ -263,7 +263,7 @@ function readFile() {
             if (ignore_pos.includes(i))
                 continue
 
-            allTransScripts[current_transcriptPos].value = backupTranscripts[i]
+            allTransScripts[current_transcriptPos].value = backupTranscripts[i].replace('{currency}', '')
             current_transcriptPos++
         }
     };
