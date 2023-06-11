@@ -6,9 +6,9 @@ const generateFile = (isBackup=false) => {
 
     let fileContent = `${temp}{
         locale: {
-            code: "{74}",
-            iso: "{75}",
-            name: "{76}"
+            code: "{77}",
+            iso: "{78}",
+            name: "{79}"
         },
         setup: {
             nav: {
@@ -172,15 +172,22 @@ const generateFile = (isBackup=false) => {
             warnings: {
                 videoTag: "{72}",
                 backToTop: "{73}",
+            },
+            join: {
+                introHeader: "{74}",
+                private: "{75}",
+                global: "{76}"
             }
         }
     }`
 
+    
+
     const allTransScripts = document.querySelectorAll("textarea")
     
-    if (isBackup && allTransScripts[74].value.trim() == '') {
+    if (isBackup && allTransScripts[77].value.trim() == '') {
         alert("Để tạo file backup cần điền Language code")
-         allTransScripts[74].classList.add('border', 'border-danger')
+         allTransScripts[77].classList.add('border', 'border-danger')
             const y = allTransScripts[i].getBoundingClientRect().top + window.scrollY - 20;
             window.scroll({
                 top: y,
@@ -211,7 +218,7 @@ const generateFile = (isBackup=false) => {
         }
     }
     
-    const fileName = `${allTransScripts[74].value}-${isBackup ? '_not_done' : ''}.js`;
+    const fileName = `${allTransScripts[77].value}-${isBackup ? '_not_done' : ''}.js`;
     const element = document.createElement("a");
     element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(fileContent));
     element.setAttribute("download", fileName);
