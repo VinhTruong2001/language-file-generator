@@ -208,7 +208,7 @@ const generateFile = (isBackup=false) => {
         }
 
         const placeholder = `{${i}}`;
-        if (i === 75) {
+        if (i === 78) {
             fileContent = fileContent.replace(
                 placeholder, 
                 `${allTransScripts[i-1].value.trim()}-${allTransScripts[i].value.trim()}`
@@ -218,7 +218,7 @@ const generateFile = (isBackup=false) => {
         }
     }
     
-    const fileName = `${allTransScripts[77].value}-${isBackup ? '_not_done' : ''}.js`;
+    const fileName = `${allTransScripts[77].value}${isBackup ? '_not_done' : ''}.js`;
     const element = document.createElement("a");
     element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(fileContent));
     element.setAttribute("download", fileName);
